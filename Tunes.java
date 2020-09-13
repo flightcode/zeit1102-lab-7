@@ -4,24 +4,62 @@
 //  Demonstrates the use of an array of objects.
 //********************************************************************
 
+import java.util.Scanner;
+
 public class Tunes {
     // -----------------------------------------------------------------
     // Creates a CDCollection object and adds some CDs to it. Prints
     // reports on the status of the collection.
     // -----------------------------------------------------------------
+
+    Scanner input = new Scanner(System.in);
+    CDCollection music = new CDCollection();
+
     public static void main(String[] args) {
-        CDCollection music = new CDCollection();
+        new Tunes().menu();
 
-        music.addCD("Storm Front", "Billy Joel", 14.95, 10);
-        music.addCD("Come On Over", "Shania Twain", 14.95, 16);
-        music.addCD("Soundtrack", "Les Miserables", 17.95, 33);
-        music.addCD("Graceland", "Paul Simon", 13.90, 11);
+    }
 
+    public void menu() {
+        System.out.println("Select Option:");
+        System.out.println("1. View Collection");
+        System.out.println("2. Add CD");
+        System.out.println("3. Quit");
+        System.out.println("---");
+        String menuOption = input.nextLine();
+        System.out.println("---");
+        switch (Integer.parseInt("0" + menuOption)) {
+            case 1:
+                view();
+                menu();
+                break;
+            case 2:
+                add();
+                menu();
+                break;
+            case 3:
+                break;
+            default:
+                menu();
+                break;
+        }
+    }
+
+    public void view() {
         System.out.println(music);
+        System.out.println("---");
+    }
 
-        music.addCD("Double Live", "Garth Brooks", 19.99, 26);
-        music.addCD("Greatest Hits", "Jimmy Buffet", 15.95, 13);
-
-        System.out.println(music);
+    public void add() {
+        System.out.println("Input Album Name: ");
+        String name = input.nextLine();
+        System.out.println("Input Album Artist: ");
+        String artist = input.nextLine();
+        System.out.print("Input Album Cost: $");
+        Double cost = input.nextDouble();
+        System.out.print("Input Track Count: ");
+        int count = input.nextInt();
+        music.addCD(name, artist, cost, count);
+        System.out.println("---");
     }
 }
