@@ -34,7 +34,13 @@ public class Tunes {
                 menu();
                 break;
             case 2:
-                add();
+                try {
+                    add();
+                } catch (Exception e) {
+                    input.nextLine();
+                    System.out.println(e);
+                    add();
+                }
                 menu();
                 break;
             case 3:
