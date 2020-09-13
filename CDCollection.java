@@ -24,13 +24,17 @@ public class CDCollection {
     // Adds a CD to the collection, increasing the size of the
     // collection if necessary.
     // -----------------------------------------------------------------
-    public void addCD(String title, String artist, double cost, int tracks) {
-        if (count == collection.length)
-            increaseSize();
+    public void addCD(String title, String artist, double cost, int tracks) throws Exception {
+        if (cost > 0) {
+            if (count == collection.length)
+                increaseSize();
 
-        collection[count] = new CD(title, artist, cost, tracks);
-        totalCost += cost;
-        count++;
+            collection[count] = new CD(title, artist, cost, tracks);
+            totalCost += cost;
+            count++;
+        } else {
+            throw new BadCostException("Cost must be greater than 0");
+        }
     }
 
     // -----------------------------------------------------------------

@@ -34,12 +34,14 @@ public class Tunes {
                 menu();
                 break;
             case 2:
-                try {
-                    add();
-                } catch (Exception e) {
-                    input.nextLine();
-                    System.out.println(e);
-                    add();
+                while (true) {
+                    try {
+                        add();
+                        break;
+                    } catch (Exception e) {
+                        input.nextLine();
+                        System.out.println(e);
+                    }
                 }
                 menu();
                 break;
@@ -56,7 +58,7 @@ public class Tunes {
         System.out.println("---");
     }
 
-    public void add() {
+    public void add() throws Exception {
         System.out.println("Input Album Name: ");
         String name = input.nextLine();
         System.out.println("Input Album Artist: ");
